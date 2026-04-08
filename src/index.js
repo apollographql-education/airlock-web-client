@@ -12,6 +12,9 @@ import {setContext} from '@apollo/client/link/context';
 import * as Sentry from '@sentry/react';
 import { BrowserTracing } from '@sentry/tracing';
 
+import theme from './theme.js';
+import { ChakraProvider } from '@chakra-ui/react';
+
 Sentry.init({
   dsn: 'https://83743324e3cf4ba4aae102ad42cc3a76@o53943.ingest.sentry.io/4504050684592128',
   integrations: [new BrowserTracing()],
@@ -23,15 +26,10 @@ Sentry.init({
 });
 
 const httpLink = createHttpLink({
-  uri:
-    process.env.NODE_ENV !== 'production'
-      ? 'http://localhost:4000'
-      : process.env.REACT_APP_GQL_SERVER
-  // uri: 'https://rt-airlock-gateway-managed.herokuapp.com/'
+  uri: import.meta.env.DEV
+    ? 'http://localhost:4000'
+    : import.meta.env.VITE_GQL_SERVER
 });
-
-import theme from './theme.js';
-import {ChakraProvider} from '@chakra-ui/react';
 
 const authLink = setContext((_, {headers}) => {
   // get the authentication token from local storage if it exists

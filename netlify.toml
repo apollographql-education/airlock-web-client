@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Netlify sets NODE_ENV=production during install, which skips devDependencies by
+# default — without Vite the build fails with "vite: not found".
+[build.environment]
+  NPM_CONFIG_PRODUCTION = "false"
