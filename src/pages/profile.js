@@ -13,7 +13,8 @@ import {
 } from '@chakra-ui/react';
 import {IoCheckmark, IoExit, IoWallet} from 'react-icons/io5';
 import {Link} from 'react-router-dom';
-import {gql, useMutation} from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useMutation } from "@apollo/client/react";
 import {useUser} from '../utils';
 
 export const UPDATE_PROFILE = gql`

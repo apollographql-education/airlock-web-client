@@ -15,7 +15,7 @@ import {
 import {HOST_LISTINGS} from '../utils';
 import {IoAddCircleOutline} from 'react-icons/io5';
 import {Link} from 'react-router-dom';
-import {useQuery} from '@apollo/client';
+import { useQuery } from "@apollo/client/react";
 
 const LINK_PROPS = {
   as: Link,

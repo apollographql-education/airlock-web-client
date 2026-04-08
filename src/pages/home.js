@@ -20,7 +20,9 @@ import {
 import {Link} from 'react-router-dom';
 import {format} from 'date-fns';
 import {getDatePickerProps, getNextDate} from '../utils';
-import {gql, useQuery} from '@apollo/client';
+import { gql } from '@apollo/client';
+
+import { useQuery } from "@apollo/client/react";
 
 import 'react-datepicker/dist/react-datepicker.css';
 

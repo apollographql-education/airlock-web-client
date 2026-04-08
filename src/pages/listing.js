@@ -24,7 +24,8 @@ import {
 import {GUEST_TRIPS} from './trips';
 import {IoBedOutline, IoCreate} from 'react-icons/io5';
 import {Link, useParams} from 'react-router-dom';
-import {gql, useQuery} from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useQuery } from "@apollo/client/react";
 import {useUser} from '../utils';
 
 export const LISTING = gql`

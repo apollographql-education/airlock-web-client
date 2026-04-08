@@ -2,7 +2,9 @@ import CurrentTrips from '../components/Trips';
 import Layout from '../layouts/Layout';
 import QueryResult from '../components/QueryResult';
 import React from 'react';
-import {gql, useQuery} from '@apollo/client';
+import { gql } from '@apollo/client';
+
+import { useQuery } from "@apollo/client/react";
 
 export const GUEST_TRIPS = gql`
   query GetGuestTrips {

@@ -16,7 +16,8 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react';
-import {gql, useMutation} from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useMutation } from "@apollo/client/react";
 import {useUser} from '../utils';
 
 export const ADD_FUNDS = gql`
