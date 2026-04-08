@@ -5,7 +5,8 @@ import React from 'react';
 import {Button} from '@chakra-ui/react';
 import {IoArrowBackOutline} from 'react-icons/io5';
 import {LISTING_FRAGMENT} from '../utils';
-import {gql, useQuery} from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useQuery } from "@apollo/client/react";
 import {useHistory, useParams} from 'react-router-dom';
 
 export const EDIT_LISTING = gql`

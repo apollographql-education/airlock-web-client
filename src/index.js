@@ -1,19 +1,15 @@
 import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  ApolloClient,
-  ApolloProvider,
-  InMemoryCache,
-  createHttpLink
-} from '@apollo/client';
-import {setContext} from '@apollo/client/link/context';
+import {ApolloClient, InMemoryCache, HttpLink} from '@apollo/client';
+import {ApolloProvider} from '@apollo/client/react';
+import {SetContextLink} from '@apollo/client/link/context';
 
 import * as Sentry from '@sentry/react';
-import { BrowserTracing } from '@sentry/tracing';
+import {BrowserTracing} from '@sentry/tracing';
 
 import theme from './theme.js';
-import { ChakraProvider } from '@chakra-ui/react';
+import {ChakraProvider} from '@chakra-ui/react';
 
 Sentry.init({
   dsn: 'https://83743324e3cf4ba4aae102ad42cc3a76@o53943.ingest.sentry.io/4504050684592128',
@@ -25,17 +21,16 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
   uri: import.meta.env.DEV
     ? 'http://localhost:4000'
     : import.meta.env.VITE_GQL_SERVER
 });
 
-const authLink = setContext((_, {headers}) => {
-  // get the authentication token from local storage if it exists
+const authLink = new SetContextLink((prevContext, _operation) => {
   const token = localStorage.getItem('token');
+  const headers = prevContext.headers ?? {};
 
-  // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
@@ -47,8 +42,15 @@ const authLink = setContext((_, {headers}) => {
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
-  name: 'web-client',
-  version: '0.9'
+  clientAwareness: {
+    name: 'web-client',
+    version: '0.9'
+  },
+  defaultOptions: {
+    watchQuery: {
+      notifyOnNetworkStatusChange: false
+    }
+  }
 });
 
 ReactDOM.render(

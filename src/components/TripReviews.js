@@ -13,7 +13,7 @@ import {
   useToast
 } from '@chakra-ui/react';
 import {IoChevronDown, IoChevronUp} from 'react-icons/io5';
-import {useMutation} from '@apollo/client';
+import { useMutation } from "@apollo/client/react";
 
 function Review({review, children}) {
   return (

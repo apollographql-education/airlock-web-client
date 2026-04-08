@@ -2,7 +2,8 @@ import Bookings from '../components/Bookings';
 import Layout from '../layouts/Layout';
 import QueryResult from '../components/QueryResult';
 import React from 'react';
-import {gql, useQuery} from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useQuery } from "@apollo/client/react";
 import {useParams} from 'react-router-dom';
 
 export const HOST_BOOKINGS = gql`

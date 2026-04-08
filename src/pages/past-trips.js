@@ -3,7 +3,9 @@ import QueryResult from '../components/QueryResult';
 import React from 'react';
 import Trips from '../components/Trips';
 import {Center, Spinner} from '@chakra-ui/react';
-import {gql, useQuery} from '@apollo/client';
+import { gql } from '@apollo/client';
+
+import { useQuery } from "@apollo/client/react";
 
 export const PAST_GUEST_TRIPS = gql`
   query GetPastTrips {

@@ -18,7 +18,8 @@ import {
   VStack
 } from '@chakra-ui/react';
 import {getDatePickerProps} from '../utils';
-import {gql, useQuery} from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useQuery } from "@apollo/client/react";
 import {useLocation} from 'react-router-dom';
 
 import 'react-datepicker/dist/react-datepicker.css';
